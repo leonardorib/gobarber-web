@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft, FiLogIn, FiMail, FiLock, FiUser } from 'react-icons/fi';
+import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
 
 // Form component interface
 import { FormHandles } from '@unform/core';
