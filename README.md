@@ -12,6 +12,8 @@ Application for barber shops appointments booking. Developed along the GoStack b
 
 The platform allow users to make appointments with specified date and hour with providers **through the native mobile app**, not allowing conflicts in the providers schedule. The providers can then check out their schedule on this **React web app**, seeing upcoming customers.
 
+## :computer: Can I see it running?
+
 You can check it out up and running at [Netlify by clicking here](https://gobarber-web-react.netlify.app/).
 
 ## :technologist: Where can I find the backend API and the mobile app code?
