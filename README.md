@@ -1,9 +1,9 @@
 # <p align="center">GoBarber - React Web Frontend</p>
 
-[<p align="center"><img src=".readmeImages/logo-gray-darker-text.svg" height="150"/></p>](https://gobarber-web-react.netlify.app/)
+<p align="center"><a href="https://gobarber-web-react.netlify.app/" target="_blank"><img src=".readmeImages/logo-gray-darker-text.svg" height="150"/></a></p>
 <br />
 
-[<p align="center"><img src=".readmeImages/dashboard_zoom_macbook.png" height="450"/></p>](https://gobarber-web-react.netlify.app/)
+<p align="center"><a href="https://gobarber-web-react.netlify.app/" target="_blank"><img src=".readmeImages/dashboard_zoom_macbook.png" height="450"/></a></p>
 <br/>
 
 ## :notebook_with_decorative_cover: About
