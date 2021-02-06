@@ -1,22 +1,22 @@
-import React, { ChangeEvent, useCallback, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft, FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi';
+import React, { ChangeEvent, useCallback, useRef } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { FiArrowLeft, FiMail, FiLock, FiUser, FiCamera } from "react-icons/fi";
 
 // Form component interface
-import { FormHandles } from '@unform/core';
+import { FormHandles } from "@unform/core";
 
-import { Form } from '@unform/web';
-import * as Yup from 'yup';
+import { Form } from "@unform/web";
+import * as Yup from "yup";
 
-import getValidationErrors from '../../utils/getValidationErrors';
-import api from '../../services/api';
-import { useToast } from '../../hooks/toast';
+import getValidationErrors from "../../utils/getValidationErrors";
+import api from "../../services/api";
+import { useToast } from "../../hooks/toast";
 
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
-import { Container, Content, AvatarInput } from './styles';
-import { useAuth } from '../../hooks/auth';
+import { Container, Content, AvatarInput } from "./styles";
+import { useAuth } from "../../hooks/auth";
 
 interface ProfileFormData {
   name: string;
@@ -39,23 +39,23 @@ const Profile: React.FC = () => {
         formRef.current?.setErrors([]);
 
         const schema = Yup.object().shape({
-          name: Yup.string().required('Nome obrigatório'),
+          name: Yup.string().required("Nome obrigatório"),
           email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um email válido'),
+            .required("E-mail obrigatório")
+            .email("Digite um email válido"),
           old_password: Yup.string(),
-          password: Yup.string().when('old_password', {
+          password: Yup.string().when("old_password", {
             is: (val) => !!val.length,
-            then: Yup.string().required('Campo obrigatório'),
+            then: Yup.string().required("Campo obrigatório"),
             otherwise: Yup.string(),
           }),
           password_confirmation: Yup.string()
-            .when('old_password', {
+            .when("old_password", {
               is: (val) => !!val.length,
-              then: Yup.string().required('Campo obrigatório'),
+              then: Yup.string().required("Campo obrigatório"),
               otherwise: Yup.string(),
             })
-            .oneOf([Yup.ref('password')], 'Confirmação incorreta'),
+            .oneOf([Yup.ref("password")], "Confirmação incorreta"),
         });
 
         await schema.validate(data, {
@@ -84,17 +84,17 @@ const Profile: React.FC = () => {
             : {}
         );
 
-        const response = await api.put('/profile', formData);
+        const response = await api.put("/profile", formData);
 
         updateUser(response.data);
 
-        history.push('/dashboard');
+        history.push("/dashboard");
 
         addToast({
-          type: 'success',
-          title: 'Perfil atualizado!',
+          type: "success",
+          title: "Perfil atualizado!",
           description:
-            'Suas informações do perfil foram atualizadas com sucesso',
+            "Suas informações do perfil foram atualizadas com sucesso",
         });
       } catch (err) {
         // If it's a yup error
@@ -106,9 +106,9 @@ const Profile: React.FC = () => {
         }
 
         addToast({
-          type: 'error',
-          title: 'Erro na atualização',
-          description: 'Ocorreu um erro ao atualizar perfil, tente novamente.',
+          type: "error",
+          title: "Erro na atualização",
+          description: "Ocorreu um erro ao atualizar perfil, tente novamente.",
         });
       }
     },
@@ -120,13 +120,13 @@ const Profile: React.FC = () => {
       if (e.target.files) {
         const data = new FormData();
 
-        data.append('avatar', e.target.files[0]);
+        data.append("avatar", e.target.files[0]);
 
-        await api.patch('/users/avatar', data).then((response) => {
+        await api.patch("/users/avatar", data).then((response) => {
           updateUser(response.data);
           addToast({
-            type: 'success',
-            title: 'Avatar atualizado!',
+            type: "success",
+            title: "Avatar atualizado!",
           });
         });
       }
@@ -138,7 +138,7 @@ const Profile: React.FC = () => {
     <Container>
       <header>
         <div>
-          <Link to='/dashboard'>
+          <Link to="/dashboard">
             <FiArrowLeft />
           </Link>
         </div>
@@ -154,39 +154,46 @@ const Profile: React.FC = () => {
           }}
         >
           <AvatarInput>
-            <img src={user.avatar_url} alt={user.name} />
-            <label htmlFor='avatar'>
+            <img
+              src={
+                user.avatar_url
+                  ? user.avatar_url
+                  : require("../../assets/avatar-placeholder.png")
+              }
+              alt={user.name}
+            />
+            <label htmlFor="avatar">
               <FiCamera />
-              <input type='file' id='avatar' onChange={handleAvatarChange} />
+              <input type="file" id="avatar" onChange={handleAvatarChange} />
             </label>
           </AvatarInput>
           <h1>Meu perfil</h1>
 
-          <Input name='name' icon={FiUser} type='text' placeholder='Nome' />
-          <Input name='email' icon={FiMail} type='text' placeholder='E-mail' />
+          <Input name="name" icon={FiUser} type="text" placeholder="Nome" />
+          <Input name="email" icon={FiMail} type="text" placeholder="E-mail" />
           <Input
             containerStyle={{ marginTop: 24 }}
-            name='old_password'
+            name="old_password"
             icon={FiLock}
-            type='password'
-            placeholder='Senha atual'
+            type="password"
+            placeholder="Senha atual"
           />
           <Input
-            name='password'
+            name="password"
             icon={FiLock}
-            type='password'
-            placeholder='Nova senha'
+            type="password"
+            placeholder="Nova senha"
           />
 
           <Input
-            name='password_confirmation'
+            name="password_confirmation"
             icon={FiLock}
-            type='password'
-            placeholder='Confirmar senha'
+            type="password"
+            placeholder="Confirmar senha"
           />
-          <Button type='submit'>Confirmar mudanças</Button>
+          <Button type="submit">Confirmar mudanças</Button>
         </Form>
-        <Link to='/dashboard'>
+        <Link to="/dashboard">
           <FiArrowLeft />
           Voltar ao dashboard
         </Link>

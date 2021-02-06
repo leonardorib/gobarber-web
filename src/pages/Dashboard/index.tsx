@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { isToday, format, parseISO, isAfter } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
-import DayPicker, { DayModifiers } from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { isToday, format, parseISO, isAfter } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
+import DayPicker, { DayModifiers } from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 import {
   Container,
@@ -15,13 +15,13 @@ import {
   NextAppointment,
   Section,
   Appointment,
-} from './styles';
+} from "./styles";
 
-import logoImg from '../../assets/logo.svg';
-import { FiClock, FiPower } from 'react-icons/fi';
-import { useAuth } from '../../hooks/auth';
-import api from '../../services/api';
-import { Link } from 'react-router-dom';
+import logoImg from "../../assets/logo.svg";
+import { FiClock, FiPower } from "react-icons/fi";
+import { useAuth } from "../../hooks/auth";
+import api from "../../services/api";
+import { Link } from "react-router-dom";
 
 interface MonthAvailabilityItem {
   day: number;
@@ -73,7 +73,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     api
-      .get<Appointment[]>('/appointments/me', {
+      .get<Appointment[]>("/appointments/me", {
         params: {
           year: selectedDate.getFullYear(),
           month: selectedDate.getMonth() + 1,
@@ -84,7 +84,7 @@ const Dashboard: React.FC = () => {
         const appointmentsFormatted = response.data.map((appointment) => {
           return {
             ...appointment,
-            hourFormatted: format(parseISO(appointment.date), 'HH:mm'),
+            hourFormatted: format(parseISO(appointment.date), "HH:mm"),
           };
         });
         setAppointments(appointmentsFormatted);
@@ -111,7 +111,7 @@ const Dashboard: React.FC = () => {
   }, [selectedDate]);
 
   const selectedWeekDay = useMemo(() => {
-    return format(selectedDate, 'cccc', { locale: ptBR });
+    return format(selectedDate, "cccc", { locale: ptBR });
   }, [selectedDate]);
 
   const morningAppointments = useMemo(() => {
@@ -136,19 +136,26 @@ const Dashboard: React.FC = () => {
     <Container>
       <Header>
         <HeaderContent>
-          <img src={logoImg} alt='GoBarber' />
+          <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            <img src={user.avatar_url} alt='Leonardo Ribeiro' />
+            <img
+              src={
+                user.avatar_url
+                  ? user.avatar_url
+                  : require("../../assets/avatar-placeholder.png")
+              }
+              alt={user.name}
+            />
             <div>
               <span>Bem-vindo,</span>
-              <Link to='/profile'>
+              <Link to="/profile">
                 <strong>{user.name}</strong>
               </Link>
             </div>
           </Profile>
 
-          <button type='button' onClick={signOut}>
+          <button type="button" onClick={signOut}>
             <FiPower />
           </button>
         </HeaderContent>
@@ -168,7 +175,11 @@ const Dashboard: React.FC = () => {
               <strong>Agendamento a seguir</strong>
               <div>
                 <img
-                  src={nextAppointment.user.avatar_url}
+                  src={
+                    nextAppointment.user.avatar_url
+                      ? nextAppointment.user.avatar_url
+                      : require("../../assets/avatar-placeholder.png")
+                  }
                   alt={nextAppointment.user.name}
                 />
                 <strong>{nextAppointment.user.name}</strong>
@@ -195,7 +206,11 @@ const Dashboard: React.FC = () => {
 
                 <div>
                   <img
-                    src={appointment.user.avatar_url}
+                    src={
+                      appointment.user.avatar_url
+                        ? appointment.user.avatar_url
+                        : require("../../assets/avatar-placeholder.png")
+                    }
                     alt={appointment.user.name}
                   />
                   <strong>{appointment.user.name}</strong>
@@ -218,7 +233,11 @@ const Dashboard: React.FC = () => {
 
                 <div>
                   <img
-                    src={appointment.user.avatar_url}
+                    src={
+                      appointment.user.avatar_url
+                        ? appointment.user.avatar_url
+                        : require("../../assets/avatar-placeholder.png")
+                    }
                     alt={appointment.user.name}
                   />
                   <strong>{appointment.user.name}</strong>
@@ -229,7 +248,7 @@ const Dashboard: React.FC = () => {
         </Schedule>
         <Calendar>
           <DayPicker
-            weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}
+            weekdaysShort={["D", "S", "T", "Q", "Q", "S", "S"]}
             fromMonth={new Date()}
             disabledDays={[{ daysOfWeek: [0, 6] }, ...disabledDays]}
             modifiers={{ available: { daysOfWeek: [1, 2, 3, 4, 5] } }}
@@ -237,18 +256,18 @@ const Dashboard: React.FC = () => {
             onMonthChange={handleMonthChange}
             selectedDays={selectedDate}
             months={[
-              'Janeiro',
-              'Fevereiro',
-              'Março',
-              'Abril',
-              'Maio',
-              'Junho',
-              'Julho',
-              'Agosto',
-              'Setembro',
-              'Outubro',
-              'Novembro',
-              'Dezembro',
+              "Janeiro",
+              "Fevereiro",
+              "Março",
+              "Abril",
+              "Maio",
+              "Junho",
+              "Julho",
+              "Agosto",
+              "Setembro",
+              "Outubro",
+              "Novembro",
+              "Dezembro",
             ]}
           />
         </Calendar>
