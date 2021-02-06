@@ -2,7 +2,7 @@
 
 # <p align="center"><img src=".readmeImages/logo-gray-darker-text.svg" height="150"/></p>
 
-## About
+## :notebook_with_decorative_cover: About
 
 Application for barber shops appointments booking. Develop during the GoStack bootcamp carried out by Rocketseat.
 
@@ -10,14 +10,14 @@ The platform allow users to make appointments with specified date and hour with 
 
 You can check it out up and running at Netlify by clicking [here](https://gobarber-web-react.netlify.app/).
 
-## Where can I find the backend API and the mobile app?
+## :technologist: Where can I find the backend API and the mobile app?
 
 You can check the repositories here:
 
 - [NodeJS API](https://github.com/leonardorib/gobarber-api)
 - [React Native app](https://github.com/leonardorib/gobarber-mobile)
 
-## Technologies in the Web Frontend
+## :rocket: Technologies in the Web Frontend
 
 - Typescript
 - React
