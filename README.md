@@ -1,6 +1,6 @@
 # <p align="center">GoBarber - React Web Frontend</p>
 
-# <p align="center"><img src=".readmeImages/logo-dark-text.svg" height="100"/></p>
+# <p align="center"><img src=".readmeImages/logo-gray-darker-text.svg" height="150"/></p>
 
 ## About
 
