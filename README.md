@@ -33,9 +33,8 @@ You can check the repositories here:
 
 ## The author
 
-Made with :heart: by Leonardo Ribeiro.
+Made with :heart: by Leonardo Ribeiro. :brazil:
 
 Get in touch! :smiley:
 
-[<img src=".readmeImages/linkedin-badge.svg"/>](https://www.linkedin.com/in/leonardorib/)
-[<img src=".readmeImages/github-badge.svg"/>](https://github.com/leonardorib)
+[<img src=".readmeImages/linkedin-badge.svg"/>](https://www.linkedin.com/in/leonardorib/) [<img src=".readmeImages/github-badge.svg"/>](https://github.com/leonardorib)
