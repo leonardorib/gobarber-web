@@ -30,3 +30,12 @@ You can check the repositories here:
 - Styled-components
 - React Context API
 - Continuous Deployment with Netlify + Github
+
+## The author
+
+Made with :heart: by Leonardo Ribeiro.
+
+Get in touch! :smiley:
+
+[<img src=".readmeImages/linkedin-badge.svg"/>](https://www.linkedin.com/in/leonardorib/)
+[<img src=".readmeImages/github-badge.svg"/>](https://github.com/leonardorib)
